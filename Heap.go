@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"log"
 )
 
 type Heap struct {
@@ -83,7 +82,6 @@ func (h *Heap) heapify(i int) {
 			h.heapify(i / 2)
 		}
 	} else {
-		log.Fatal(err)
 	}
 }
 
@@ -92,21 +90,16 @@ func (h *Heap) bubbleDown(i int) {
 	leftErr, left := h.getLeft(i)
 	rightErr, right := h.getRight(i)
 	if err != nil {
-		log.Fatal(err)
 		return
 	}
 	if (leftErr == nil && elementAsParent < left) && (rightErr == nil && elementAsParent < right) {
 		if leftErr != nil {
-			log.Fatal(leftErr)
 		}
 		if rightErr != nil {
-			log.Fatal(rightErr)
 		}
 		return
 	}
 	if leftErr != nil && rightErr != nil {
-		log.Fatal(leftErr)
-		log.Fatal(rightErr)
 		return
 	}
 	var smallest int
